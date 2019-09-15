@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="a.arab (generated)" id="1568465287943-1">
+        <createTable tableName="department">
+            <column name="id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dept_name" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="a.arab (generated)" id="1568465287943-2">
+        <createTable tableName="employee">
+            <column name="id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emp_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dept" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="a.arab (generated)" id="1568465287943-3">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="department"/>
+    </changeSet>
+    <changeSet author="a.arab (generated)" id="1568465287943-4">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="employee"/>
+    </changeSet>
+    <changeSet author="a.arab (generated)" id="1568465287943-5">
+        <createIndex indexName="fk_emp_dept" tableName="employee">
+            <column name="dept"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="a.arab (generated)" id="1568465287943-6">
+        <createIndex indexName="idx_exp_name" tableName="employee">
+            <column name="emp_name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="a.arab (generated)" id="1568465287943-7">
+        <addForeignKeyConstraint baseColumnNames="dept" baseTableName="employee" constraintName="fk_emp_dept" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="id" referencedTableName="department"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,38 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet id="create_department2" author="a.arab">
+		<createTable tableName="department2">
+			<column name="id" type="int">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="department2" />
+		</rollback>
+	</changeSet>
+
+	<changeSet author="a.arab" id="add-department">
+		<insert tableName="department">
+			<column name="id" value="1" />
+			<column name="dept_name" value="operation" />
+		</insert>
+
+		<rollback>
+			<delete tableName="department">
+				<where>id=1</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="tag-1.3" author="a.arab">
+		<tagDatabase tag="1.3" />
+	</changeSet>
+
+</databaseChangeLog>
