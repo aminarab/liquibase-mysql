@@ -14,3 +14,6 @@ https://www.liquibase.org/documentation/command_line.html
 
 #changeset .xml file tag description and example codes
 https://www.liquibase.org/documentation/changes/drop_table.html
+
+#run liquibase on multiple schema
+https://stackoverflow.com/questions/24406996/liquibase-with-multiple-schemas
